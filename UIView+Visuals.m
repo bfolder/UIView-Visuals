@@ -40,7 +40,7 @@
 
 -(void)removeFromSuperviewWithFadeDuration: (NSTimeInterval)duration
 {
-    [UIView beginAnimations: nil context: nil];
+    [UIView beginAnimations: nil context: NULL];
 	[UIView setAnimationBeginsFromCurrentState: YES];
 	[UIView setAnimationDuration: duration];
     [UIView setAnimationDelegate: self];
@@ -48,5 +48,28 @@
     self.alpha = 0.0;
 	[UIView commitAnimations];	
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)addSubview: (UIView *)subview withTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration;
+{
+	[UIView beginAnimations: nil context: NULL];
+	[UIView setAnimationDuration: duration];
+	[UIView setAnimationTransition: transition forView: self cache: YES];
+	[self addSubview: subview];
+	[UIView commitAnimations];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)removeFromSuperviewWithTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration
+{
+	[UIView beginAnimations: nil context: NULL];
+	[UIView setAnimationDuration: duration];
+	[UIView setAnimationTransition: transition forView: self.superview cache: YES];
+	[self removeFromSuperview];
+	[UIView commitAnimations];
+}
+
 
 @end

@@ -19,7 +19,7 @@
               color: (UIColor *)color;
 
 /*
- * Draws shadow with properties
+ *  Draws shadow with properties
  */
 -(void)shadowWithColor: (UIColor *)color 
                 offset: (CGSize)offset 
@@ -27,8 +27,18 @@
                 radius: (CGFloat)radius;
 
 /*
- * Removes from superview with fade
+ *  Removes from superview with fade
  */
 -(void)removeFromSuperviewWithFadeDuration: (NSTimeInterval)duration;
+
+/*
+ *  Adds a subview with given transition & duration
+ */
+-(void)addSubview: (UIView *)view withTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration;
+
+/*
+ *  Removes from superview with given transition & duration
+ */
+-(void)removeFromSuperviewWithTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration;
 
 @end
