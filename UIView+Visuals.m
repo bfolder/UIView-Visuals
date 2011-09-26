@@ -7,8 +7,9 @@
 //
 
 #import "UIView+Visuals.h"
-#import <QuartzCore/QuartzCore.h>
 
+// Degree -> Rad
+#define degToRad(x) (M_PI * (x) / 180.0)
 
 @implementation UIView (Visuals)
 
@@ -69,6 +70,44 @@
 	[UIView setAnimationTransition: transition forView: self.superview cache: YES];
 	[self removeFromSuperview];
 	[UIView commitAnimations];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)rotateByAngle: (CGFloat)angle 
+            duration: (NSTimeInterval)duration 
+         autoreverse: (BOOL)autoreverse
+         repeatCount: (CGFloat)repeatCount
+      timingFunction: (CAMediaTimingFunction *)timingFunction
+{
+    CABasicAnimation *rotation = [CABasicAnimation animationWithKeyPath: @"transform.rotation"];
+    rotation.toValue = [NSNumber numberWithFloat: degToRad(angle)];
+    rotation.duration = duration;
+    rotation.repeatCount = repeatCount;
+    rotation.autoreverses = autoreverse;
+    rotation.removedOnCompletion = NO;
+	rotation.fillMode = kCAFillModeBoth;
+	rotation.timingFunction = timingFunction != nil ? timingFunction : [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
+    [self.layer addAnimation: rotation forKey: @"rotationAnimation"];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+-(void)moveToPoint: (CGPoint)newPoint 
+          duration: (NSTimeInterval)duration 
+       autoreverse: (BOOL)autoreverse
+       repeatCount: (CGFloat)repeatCount
+    timingFunction: (CAMediaTimingFunction *)timingFunction
+{
+    CABasicAnimation *move = [CABasicAnimation animationWithKeyPath: @"position"];
+    move.toValue = [NSValue valueWithCGPoint: newPoint];
+    move.duration = duration;
+    move.removedOnCompletion = NO;
+    move.repeatCount = repeatCount;
+    move.autoreverses = autoreverse;
+	move.fillMode = kCAFillModeBoth;
+	move.timingFunction = timingFunction != nil ? timingFunction : [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
+    [self.layer addAnimation: move forKey: @"positionAnimation"];
 }
 
 

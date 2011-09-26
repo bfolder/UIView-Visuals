@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface UIView (Visuals)
@@ -37,8 +38,26 @@
 -(void)addSubview: (UIView *)view withTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration;
 
 /*
- *  Removes from superview with given transition & duration
+ *  Removes view from superview with given transition & duration
  */
 -(void)removeFromSuperviewWithTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration;
+
+/*
+ *  Rotates view by given angle. TimingFunction can be nil and defaults to kCAMediaTimingFunctionEaseInEaseOut.
+ */
+-(void)rotateByAngle: (CGFloat)angle 
+            duration: (NSTimeInterval)duration 
+         autoreverse: (BOOL)autoreverse
+         repeatCount: (CGFloat)repeatCount
+      timingFunction: (CAMediaTimingFunction *)timingFunction;
+
+/*
+ *  Moves view to point. TimingFunction can be nil and defaults to kCAMediaTimingFunctionEaseInEaseOut.
+ */
+-(void)moveToPoint: (CGPoint)newPoint 
+          duration: (NSTimeInterval)duration 
+       autoreverse: (BOOL)autoreverse
+       repeatCount: (CGFloat)repeatCount
+    timingFunction: (CAMediaTimingFunction *)timingFunction;
 
 @end
