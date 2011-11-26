@@ -1,6 +1,5 @@
 //
 //  UIView+Visuals.m
-//  uiviewtmp
 //
 //  Created by Heiko Dreyer on 25.05.11.
 //  Copyright 2011 boxedfolder.com. All rights reserved.
