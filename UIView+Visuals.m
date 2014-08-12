@@ -51,7 +51,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)addSubview: (UIView *)subview withTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration;
+-(void)addSubview: (UIView *)subview withTransition: (UIViewAnimationTransition)transition duration: (NSTimeInterval)duration
 {
 	[UIView beginAnimations: nil context: NULL];
 	[UIView setAnimationDuration: duration];
