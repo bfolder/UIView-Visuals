@@ -5,7 +5,7 @@
 //  Copyright 2011 boxedfolder.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
 
